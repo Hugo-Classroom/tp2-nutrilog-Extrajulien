@@ -10,9 +10,22 @@
 		8C9599A12E99E9660096FF26 /* NutriLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NutriLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		7C24667A2EBCE2C200ABF500 /* Exceptions for "NutriLog" folder in "NutriLog" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 8C9599A02E99E9660096FF26 /* NutriLog */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		8C9599A32E99E9660096FF26 /* NutriLog */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				7C24667A2EBCE2C200ABF500 /* Exceptions for "NutriLog" folder in "NutriLog" target */,
+			);
 			path = NutriLog;
 			sourceTree = "<group>";
 		};
@@ -258,6 +271,8 @@
 				DEVELOPMENT_TEAM = AYM4KRZVHP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NutriLog/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -290,6 +305,8 @@
 				DEVELOPMENT_TEAM = AYM4KRZVHP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NutriLog/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
