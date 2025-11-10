@@ -29,7 +29,11 @@ struct HomeView: View {
                 }
             }
             Section(header: Text("MACROS")) {
-                
+                HStack {
+                    infoBar(name: "Protéines", color: .red, quantity: 127, max: 150).frame(maxWidth: .infinity)
+                    infoBar(name: "Glucides", color: .purple, quantity: 105, max: 125).frame(maxWidth: .infinity)
+                    infoBar(name: "Lipides", color: .blue, quantity: 35, max: 100).frame(maxWidth: .infinity)
+                }.frame(maxWidth: .infinity)
             }
         }
     }
@@ -77,4 +81,46 @@ func formatInt(number: Int) -> String {
         return text
     }
     return "Formatter Error!"
+}
+
+
+struct infoBar: View {
+    let name: String
+    let color: Color
+    let quantity: Int
+    let max: Int
+    let size: CGFloat = 20
+    var body: some View {
+        VStack  {
+            HStack {
+                letterBubble(letter: getFirstChar(text: name), color: color).frame(width: size, height: size)
+                Text(name).foregroundStyle(color).font(.footnote).frame(maxWidth: .infinity, alignment: .leading)
+            }
+            HStack {
+                
+            }
+                
+        }
+    }
+}
+
+struct letterBubble: View {
+    let letter: String
+    let color: Color
+    
+    var body: some View {
+        ZStack {
+            Circle()
+                .fill(color)
+            Text(letter).foregroundStyle(Color.white).font(.footnote)
+        }
+    }
+}
+
+
+func getFirstChar(text: String) -> String {
+    if let char = text.first {
+        return String(char)
+    }
+    return "Error"
 }
