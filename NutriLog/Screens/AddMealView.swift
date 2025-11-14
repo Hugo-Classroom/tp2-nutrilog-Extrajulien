@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 struct AddMealView: View {
     
@@ -65,6 +66,17 @@ struct AddMealView: View {
             }
         }
     }
+    
+    func saveMeal() {
+        let context = PersistenceController.shared.context
+        context.insert(FoodEntry.init(food: meal, servingSize: (Double)(portion), mealType: foodType))
+        do {
+            try context.save()
+            print("Meal saved successfully!")
+        } catch {
+            print("Failed to save meal: \(error)")
+        }
+    }
 }
 
 #Preview {
@@ -72,9 +84,7 @@ struct AddMealView: View {
 }
 
 
-func saveMeal() {
-    
-}
+
 
 struct infoElement: View {
     let name: String

@@ -42,12 +42,7 @@ struct DailySummaryView: View {
                 Section(header: Text("Déjeuner")) {
                     ForEach(foods.filter { $0.mealType == .breakfast }) { food in
                         NavigationLink (destination: FoodDetailView()) {
-                            HStack {
-                                VStack {
-                                    Text(food.food!.name)
-                                    Text(food.food?.desc! ?? "")
-                                }
-                            }
+                            FoodEntryView(name: food.food!.name, desc: food.food?.desc! ?? "", kcal: food.calories)
                         }
                     }
                     
@@ -56,24 +51,14 @@ struct DailySummaryView: View {
                 Section(header: Text("Dîner")) {
                     ForEach(foods.filter { $0.mealType == .lunch }) { food in
                         NavigationLink (destination: FoodDetailView()) {
-                            HStack {
-                                VStack {
-                                    Text(food.food!.name)
-                                    Text(food.food?.desc! ?? "")
-                                }
-                            }
+                            FoodEntryView(name: food.food!.name, desc: food.food?.desc! ?? "", kcal: food.calories)
                         }
                     }
                 }
                 Section(header: Text("Souper")) {
                     ForEach(foods.filter { $0.mealType == .dinner }) { food in
                         NavigationLink (destination: FoodDetailView()) {
-                            HStack {
-                                VStack {
-                                    Text(food.food!.name)
-                                    Text(food.food?.desc! ?? "")
-                                }
-                            }
+                            FoodEntryView(name: food.food!.name, desc: food.food?.desc! ?? "", kcal: food.calories)
                         }
                     }
                 }
@@ -83,8 +68,10 @@ struct DailySummaryView: View {
                         showAddMeal = true
                     }
                 }
-        }.sheet(isPresented: $showAddMeal) {
-            AddMealView(showAddMeal: $showAddMeal).onAppear { loadFoods() }
+        }.sheet(isPresented: $showAddMeal, onDismiss: {
+            loadFoods()
+        }) {
+            AddMealView(showAddMeal: $showAddMeal)
         }
     }
     
@@ -240,6 +227,22 @@ struct letterBubble: View {
             Circle()
                 .fill(color)
             Text(letter).foregroundStyle(Color.white).font(.footnote)
+        }
+    }
+}
+
+struct FoodEntryView: View {
+    let name: String
+    let desc: String
+    let kcal: Double
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading) {
+                Text(name).font(.title3)
+                Text(desc)
+            }.frame(maxWidth: .infinity, alignment: .leading)
+            Spacer()
+            Text(String(format: "%.1f kcal", kcal))
         }
     }
 }
